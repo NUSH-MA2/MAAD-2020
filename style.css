@@ -1,5 +1,6 @@
 #formContainer{
-  width:40%;
+  width:55%;
+  float:left;
   margin:auto;
 }
 #formC{
@@ -23,6 +24,6 @@
 .inputs{
   
 
-  width:60%;
+  width:45%;
   float:right;
 }
