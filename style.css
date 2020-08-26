@@ -1,0 +1,28 @@
+#formContainer{
+  width:40%;
+  margin:auto;
+}
+#formC{
+  width:100%;
+}
+.rows{
+  width:100%;
+  display:block;
+
+}
+.column{
+    width:100%;
+    display:inline-block;
+    
+}
+.labels{
+  
+  width:30%
+  float:left;
+}
+.inputs{
+  
+
+  width:60%;
+  float:right;
+}
