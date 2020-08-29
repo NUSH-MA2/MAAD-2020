@@ -2,10 +2,33 @@
 <html>
 <head>
   <title>MAAD 2020</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
   <style type="text/css">
     body {
       font-family: Arial, sans-serif;
+    }
+    #formContainer{
+      width:55%;
+      float:left;
+      margin:auto;
+    }
+    #formC{
+      width:100%;
+    }
+    .rows{
+      width:100%;
+      display:block;
+    }
+    .column{
+        width:100%;
+        display:inline-block;
+    }
+    .labels{
+      width:30%
+      float:left;
+    }
+    .inputs{
+      width:45%;
+      float:right;
     }
   </style>
   <script>
@@ -27,15 +50,14 @@
       }
     }
     function generate() {
-    document.getElementById("output").innerHTML = "";
       var clueNum = document.getElementById("clue").value;
       var Lat = document.getElementById("lat").value;
       var Long = document.getElementById("long").value;
       var newPage = redirect(clueNum, Lat, Long);
       if (newPage==0){
-      document.getElementById("output").innerHTML += "Endpoint reached. Submit your final input to the MS Form."
+        document.getElementById("output").innerHTML = "Endpoint reached. Submit your final input to the MS Form."
       } else{
-      document.getElementById("output").innerHTML += "Your next clue is Clue " + newPage + "</br>";
+        document.getElementById("output").innerHTML = "Your next clue is Clue " + newPage + "</br>";
       }
     }
     </script>
@@ -71,7 +93,7 @@
   <div class="column">
   </div>
   <div class="column">
-	<button onclick="generate()">Redirect</button>
+	<button name="data" type="button" onclick="generate()">Redirect</button>
   </div>
   <div class="column">
   </div>
