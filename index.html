@@ -1,107 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MAAD 2020</title>
-  <style type="text/css">
-    body {
-      font-family: Arial, sans-serif;
-    }
-    #formContainer{
-      width:55%;
-      float:left;
-      margin:auto;
-    }
-    #formC{
-      width:100%;
-    }
-    .rows{
-      width:100%;
-      display:block;
-    }
-    .column{
-        width:100%;
-        display:inline-block;
-    }
-    .labels{
-      width:30%
-      float:left;
-    }
-    .inputs{
-      width:45%;
-      float:right;
-    }
-  </style>
-  <script>
-  function redirect(n, x, y) {
-    a=[ 8.6,11.7,10.0,10.7, 9.4,11.0,10.9,10.8,10.9,11.1, 9.5, 9.3,10.8, 9.6,12.6, 9.8,10.3,11.3,11.1,10.0, 9.9,10.2,10.8,10.8,10.3, 9.1, 9.6,12.0,10.9];
-    b=[11.6,10.7,14.0,12.6, 9.9,10.5,12.4,11.6, 9.4, 9.5, 8.7,11.5,10.2,10.4, 9.3,10.1,12.1,10.3,10.6,12.6,10.7,10.6,10.3,10.1, 9.2,11.7,11.8, 9.7,10.3];
-    c=[41.9,31.1,36.4,33.6,33.0,32.7,32.1,30.1,27.9,29.9,30.7,33.0,33.6,33.9,33.3,31.9,28.4,32.8,32.7,32.4,34.1,33.6,32.5,31.3,32.7,31.2,35.3,34.4,35.4];
-    d=[40.9,33.2,36.6,34.4,33.8,33.2,33.3,31.9,27.6,31.7,33.0,33.6,30.9,32.3,33.7,31.3,32.1,31.9,32.2,31.2,33.0,32.4,32.8,31.5,33.7,32.9,34.7,31.1,34.9];
-      if (n<1 || n>29){
-        alert("invalid clue number");
-        return -1;
-      } else{
-      	var x1 = Math.floor(x);
-        var x2 = x - x1;
-        var y1 = Math.floor(y);
-        var y2 = y - y1;
-	var res = Math.floor(a[n-1]*x1+b[n-1]*y1+c[n-1]*x2+d[n-1]*y2);
-      	return (res - 30*Math.floor(res/30));
-      }
-    }
-    function generate() {
-      var clueNum = document.getElementById("clue").value;
-      var Lat = document.getElementById("lat").value;
-      var Long = document.getElementById("long").value;
-      var newPage = redirect(clueNum, Lat, Long);
-      if (newPage==0){
-        document.getElementById("output").innerHTML = "Endpoint reached. Submit your final input to the MS Form."
-      } else{
-        document.getElementById("output").innerHTML = "Your next clue is Clue " + newPage + "</br>";
-      }
-    }
-    </script>
+	<title>MAAD 2020</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+		}
+		#formContainer {
+			width: 55%;
+			float: left;
+			margin: auto;
+		}
+		#formC {
+			width: 100%;
+		}
+		.rows {
+			width: 100%;
+			display: block;
+		}
+		.column {
+			width: 100%;
+			display: inline-block;
+		}
+		.labels {
+			width: 30%
+			float: left;
+		}
+		.inputs {
+			width: 45%;
+			float: right;
+		}
+	</style>
+	<script>
+		function redirect(n, x, y) {
+			const a = [8.6, 11.7, 10.0, 10.7,  9.4, 11.0, 10.9, 10.8, 10.9, 11.1,  9.5,  9.3, 10.8,  9.6, 12.6,  9.8, 10.3, 11.3, 11.1, 10.0,  9.9, 10.2, 10.8, 10.8, 10.3,  9.1,  9.6, 12.0, 10.9];
+			const b = [11.6, 10.7, 14.0, 12.6,  9.9, 10.5, 12.4, 11.6,  9.4,  9.5,  8.7, 11.5, 10.2, 10.4,  9.3, 10.1, 12.1, 10.3, 10.6, 12.6, 10.7, 10.6, 10.3, 10.1,  9.2, 11.7, 11.8,  9.7, 10.3];
+			const c = [41.9, 31.1, 36.4, 33.6, 33.0, 32.7, 32.1, 30.1, 27.9, 29.9, 30.7, 33.0, 33.6, 33.9, 33.3, 31.9, 28.4, 32.8, 32.7, 32.4, 34.1, 33.6, 32.5, 31.3, 32.7, 31.2, 35.3, 34.4, 35.4];
+			const d = [40.9, 33.2, 36.6, 34.4, 33.8, 33.2, 33.3, 31.9, 27.6, 31.7, 33.0, 33.6, 30.9, 32.3, 33.7, 31.3, 32.1, 31.9, 32.2, 31.2, 33.0, 32.4, 32.8, 31.5, 33.7, 32.9, 34.7, 31.1, 34.9];
+
+			if (n < 1 || n > 29){
+				alert("Invalid clue number.");
+				return;
+			} else if (x < -180 || x > 180 || y < -180 || y > 180) {
+				alert("Invalid Coordinates");
+				return;
+			}
+
+			const x1 = Math.floor(x);
+			const x2 = x - x1;
+			const y1 = Math.floor(y);
+			const y2 = y - y1;
+			const res = Math.floor(a[n-1] * x1 + b[n-1] * y1 + c[n-1] * x2 + d[n-1] * y2);
+
+			return (res - 30 * Math.floor(res / 30));
+		}
+		function generate() {
+			const clueNum = document.getElementById("clue").value;
+			const lat = document.getElementById("lat").value;
+			const long = document.getElementById("long").value;
+			const newPage = redirect(clueNum, lat, long);
+
+			if (newPage === 0){
+				document.getElementById("output").innerHTML = "Endpoint reached. Submit your final input to the MS Form.";
+			} else if (newPage !== undefined) {
+				document.getElementById("output").innerHTML = "Your next clue is Clue " + newPage + "</br>";
+			}
+		}
+	</script>
 </head>
 <body>
-  <h2>Music and Art Awareness Day 2020: Museum & Theatre Hunt!</h2>
-  <br/>
-  <br/>
-  Hint: you can work on multiple clues simultaneously and find the path afterwards
-  <br/>
-<div id="formContainer">
-<form id="formC">
-<div class="rows">
-  <div class="column">
-      <label class="labels">
+	<h2>Music and Art Awareness Day 2020: Museum & Theatre Hunt!</h2>
+	<br/><br/>
+	Hint: you can work on multiple clues simultaneously and find the path afterwards
+	<br/>
+	<div id="formContainer">
+		<form id="formC">
+			<div class="rows">
+				<div class="column">
+					<label class="labels">Clue number (0 to 29):</label>
+					<input class="inputs" type="text" id="clue"/>
+				</div>
 
-        Clue number (0 to 29):
-    </label>
-      <input class="inputs" type="text" id="clue"/>
-  </div>
-  <div class="column">
-      <label class="labels">
+				<div class="column">
+					<label class="labels">Latitude (-180 to 180):</label>
+					<input class="inputs" type="text" id="lat"/>
+				</div>
 
-        Latitude (-180 to 180):
-    </label>
-      <input class="inputs" type="text" id="lat"/>
-  </div>
-  <div class="column">
-      <label class="labels">
+				<div class="column">
+					<label class="labels">Longitude (-180 to 180):</label>
+					<input class="inputs" type="text" id="long"/>
+				</div>
 
-        Longitude (-180 to 180):
-    </label>
-      <input class="inputs" type="text" id="long"/>
-  </div>
-  <div class="column">
-  </div>
-  <div class="column">
-	<button name="data" type="button" onclick="generate()">Redirect</button>
-  </div>
-  <div class="column">
-  </div>
-   <div class="column" id="output"></div>
-</div>
-</form>
-</div>
+				<div class="column"></div>
+
+				<div class="column">
+					<button name="data" type="button" onclick="generate()">Redirect</button>
+				</div>
+
+				<div class="column"></div>
+
+				<div class="column" id="output"></div>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
