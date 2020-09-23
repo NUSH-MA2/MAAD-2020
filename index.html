@@ -50,7 +50,7 @@
 			const x2 = x - x1;
 			const y1 = Math.floor(y);
 			const y2 = y - y1;
-			const res = Math.floor(a[n-1] * x1 + b[n-1] * y1 + c[n-1] * x2 + d[n-1] * y2);
+			const res = Math.floor(a[n - 1] * x1 + b[n - 1] * y1 + c[n - 1] * x2 + d[n - 1] * y2);
 
 			return (res - 30 * Math.floor(res / 30));
 		}
@@ -60,10 +60,12 @@
 			const long = document.getElementById("long").value;
 			const newPage = redirect(clueNum, lat, long);
 
-			if (newPage === 0){
-				document.getElementById("output").innerHTML = "Endpoint reached. Submit your final input to the MS Form.";
-			} else if (newPage !== undefined) {
-				document.getElementById("output").innerHTML = "Your next clue is Clue " + newPage + "</br>";
+			if (newPage !== undefined) {
+				if (newPage === 0){
+					document.getElementById("output").innerText = "Endpoint reached. Submit your final input to the MS Form.";
+				} else  {
+					document.getElementById("output").innerText = "Your next clue is Clue " + newPage + ".";
+				}
 			}
 		}
 	</script>
