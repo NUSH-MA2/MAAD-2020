@@ -57,7 +57,7 @@
       var Long = document.getElementById("long").value;
       var newPage = redirect(clueNum, Lat, Long);
       if (newPage==0){
-        document.getElementById("output").innerHTML = "Endpoint reached. Submit your final input to the MS Form."
+        document.getElementById("output").innerHTML = "Endpoint reached. Check if you answer is correct below!"
       } else{
         document.getElementById("output").innerHTML = "Your next clue is Clue " + newPage + "</br>";
       }
@@ -126,7 +126,7 @@
 <div class="rows">
   <div class="column">
       <label class="labels">
-        Input path separated by commas (verification will take a few seconds)
+        Input final coordinates separated by a comma: (verification will take a few seconds)
     </label>
       <input class="inputs" type="text" id="path"/>
   </div>
