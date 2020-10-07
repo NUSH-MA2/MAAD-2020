@@ -62,23 +62,29 @@
         document.getElementById("output").innerHTML = "Your next clue is Clue " + newPage + "</br>";
       }
     }
-    function verify() {
-      var path = document.getElementById("path").value;
-      path = path.split(',');
-      h = "";
-      for(let i=0;i<path.length;i++){
-        h += parseInt(path[i]) + "-";
-      }
-      for(let i=0;i<100000;i++){
-        h = sha256(h);
-      }
-      if(h == "20f75f42437630624c0580ca09622b94e21d0029b9db1ccde711cf51ce63be1c"){
-        document.getElementById("output2").innerHTML = "Your solution is correct!</br>";
-      }else{
-        document.getElementById("output2").innerHTML = "Your solution is incorrect!</br>";
-      }
-    }
-    </script>
+
+	function verify() {
+		var path = document.getElementById("path").value;
+		var x = document.getElementById("x").value;
+		var y = document.getElementById("y").value;
+		path = path.split(',');
+		h = "";
+		for(let i = 0; i < path.length; i++) {
+			h += parseInt(path[i]) + " - ";
+		}
+		h += Math.round(parseFloat(x) * 100) + " - "
+		h += Math.round(parseFloat(y) * 100)
+		for(let i = 0; i < 100000; i++) {
+			h = sha256(h);
+		}
+		if(h == "8a32ec9eabf2dd4a1d4de441e73a1f3b9050cf5ea798205627df3c232738cc09") {
+			document.getElementById("output2").innerHTML = "Your solution is correct!</br>";
+		} else {
+			document.getElementById("output2").innerHTML = "Your solution is incorrect!</br>";
+		}
+	}
+    
+  </script>
 </head>
 <body>
   <h2>Museum and Theatre Scavenger Hunt!</h2>
@@ -122,24 +128,31 @@
 </form>
 </div>
 <div id="formContainer">
-<form id="formC">
-<div class="rows">
-  <div class="column">
-      <label class="labels">
-        Input final coordinates separated by a comma: (verification will take a few seconds)
-    </label>
-      <input class="inputs" type="text" id="path"/>
-  </div>
-  <div class="column">
-  </div>
-  <div class="column">
-	<button name="data" type="button" onclick="verify()">Verify</button>
-  </div>
-  <div class="column">
-  </div>
-   <div class="column" id="output2"></div>
-</div>
-</form>
+    <form id="formC">
+        <div class="rows">
+            <div class="column">
+                <label class="labels"> Warning: Verification will take a few seconds and may lag the device a bit </label>
+            </div>
+            <div class="column">
+                <label class="labels"> Input path separated by commas: </label>
+                <input class="inputs" type="text" id="path" />
+            </div>
+            <div class="column">
+                <label class="labels"> Input x coordinate to 2dp: </label>
+                <input class="inputs" type="text" id="x" />
+            </div>
+            <div class="column">
+                <label class="labels"> Input y coordinate to 2dp: </label>
+                <input class="inputs" type="text" id="y" />
+            </div>
+            <div class="column">
+                <button name="data" type="button" onclick="verify()">Verify</button>
+            </div>
+            <div class="column">
+            </div>
+            <div class="column" id="output2"></div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
